@@ -1,8 +1,8 @@
-#include "IntToBinStr.h"
+#include "PrintBinStr.h"
 #include <string>
 #include <iostream>
 
-void IntToBinStr(int digit)
+void PrintBinStr(int digit)
 {
 	unsigned int udigit = *reinterpret_cast<unsigned int*>(&digit);
 	std::string result(32, '0');

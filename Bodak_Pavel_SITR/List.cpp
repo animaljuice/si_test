@@ -78,6 +78,16 @@ void List::clear()
 	count = 0;
 }
 
+void List::print()
+{
+	ListNode* curNode = head;
+	while (curNode)
+	{
+		std::cout << curNode->data << "  " << (curNode->rand ? curNode->rand->data : std::string("null")) << std::endl;
+		curNode = curNode->next;
+	}
+}
+
 void List::Serialize(FILE* file)
 {
 	using indexType = int;

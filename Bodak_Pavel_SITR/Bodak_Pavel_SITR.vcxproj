@@ -140,12 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bodak_Pavel_SITR.cpp" />
-    <ClCompile Include="IntToBinStr.cpp" />
+    <ClCompile Include="PrintBinStr.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IntToBinStr.h" />
+    <ClInclude Include="PrintBinStr.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Tests.h" />
     <ClInclude Include="vec3.h" />

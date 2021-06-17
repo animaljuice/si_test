@@ -1,7 +1,7 @@
 #pragma once
 
 #include "List.h"
-#include "IntToBinStr.h"
+#include "PrintBinStr.h"
 #include "vec3.h"
 
 #include <stdint.h>
@@ -9,14 +9,14 @@
 
 void intToBinStrTests()
 {
-	IntToBinStr(123456);
-	IntToBinStr(-1);
-	IntToBinStr(0);
-	IntToBinStr(INT32_MAX);
-	IntToBinStr(INT32_MIN);
-	IntToBinStr(-623848);
-	IntToBinStr(256);
-	IntToBinStr(-513);
+	std::vector<int> testNumbers = { 123456, -1, 0, INT32_MAX, INT32_MIN, -623848, 256, -513 };
+
+	for (size_t numberIndex = 0; numberIndex < testNumbers.size(); numberIndex++)
+	{
+		std::cout << testNumbers[numberIndex] << " ";
+		PrintBinStr(testNumbers[numberIndex]);
+		std::cout << std::endl;
+	}
 }
 
 void serializationTest()
@@ -31,7 +31,11 @@ void serializationTest()
 	// компилятор ругается на fopen, по этому работаю с *_s версией функции
 	for (size_t initDataIndex = 0; initDataIndex < initData.size(); initDataIndex++)
 	{
+		std::cout << "/////////////////////////////" << std::endl << std::endl;
 		List outList(initData[initDataIndex]);
+		std::cout << "Serialize:" << std::endl;
+		outList.print();
+		std::cout << std::endl;
 
 		char strInt[3];
 		_itoa_s(initDataIndex, strInt, 10);
@@ -45,6 +49,9 @@ void serializationTest()
 		fopen_s(&f, fileName.data(), "rb");
 		inList.Deserialize(f);
 		fclose(f);
+
+		std::cout << "Deserialize:" << std::endl;
+		inList.print();
 	}
 }
 
@@ -88,4 +95,18 @@ void averageNormalTest()
 		reinterpret_cast<int*>(m1.m_faces.data()),
 		m1.m_vertices.size(),
 		m1.m_faces.size());
+
+	std::cout << "вершины, нормали: " << std::endl;
+	for (size_t vertIndex = 0; vertIndex < m1.m_vertices.size(); vertIndex++)
+	{
+		std::cout << "вершина: " << m1.m_vertices[vertIndex]._m_x << ' ' << m1.m_vertices[vertIndex]._m_y << ' ' << m1.m_vertices[vertIndex]._m_z << std::endl;
+		std::cout << "нормаль: " << m1.m_normals[vertIndex]._m_x << ' ' << m1.m_normals[vertIndex]._m_y << ' ' << m1.m_normals[vertIndex]._m_z << std::endl;
+		std::cout << std::endl;
+	}
+
+	std::cout << "фэйсы: " << std::endl;
+	for (size_t faceIndex = 0; faceIndex < m1.m_faces.size(); faceIndex++)
+	{
+		std::cout << m1.m_faces[faceIndex].v0 << ' ' << m1.m_faces[faceIndex].v1 << ' ' << m1.m_faces[faceIndex].v2 << std::endl;
+	}
 }

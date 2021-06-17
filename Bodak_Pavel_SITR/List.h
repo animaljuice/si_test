@@ -23,6 +23,7 @@ public:
     ~List();
 
     void clear();
+    void print();
 
     void Serialize(FILE* file);  // сохранение в файл (файл открыт с помощью fopen(path, "wb"))
     void Deserialize(FILE* file);  // загрузка из файла (файл открыт с помощью fopen(path, "rb"))

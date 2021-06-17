@@ -8,12 +8,16 @@
 int main()
 {
     srand(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()));
+    setlocale(LC_ALL, "Russian");
 
-    // задача 1
+    std::cout << "задача 1" << std::endl;
     intToBinStrTests();
-    // задача 2
+    
+    std::cout << std::endl;
+    std::cout << "задача 2" << std::endl;
     serializationTest();
-    // задача 3
+    
+    std::cout << std::endl;
+    std::cout << "задача 3" << std::endl;
     averageNormalTest();
-
 }

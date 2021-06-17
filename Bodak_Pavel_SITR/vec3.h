@@ -2,11 +2,10 @@
 
 #include <cmath>
 
-class vec3
+struct vec3
 {
 	double _m_x, _m_y, _m_z;
     
-public:
 	vec3(double x = 0., double y = 0., double z = 0.) :_m_x(x), _m_y(y), _m_z(z) {}
     vec3(const vec3& other):
         _m_x(other._m_x),
